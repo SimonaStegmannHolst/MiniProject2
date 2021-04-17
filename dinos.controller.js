@@ -101,3 +101,14 @@ export async function deleteProduct (req, res) {
     res.status(400).send(error.message);
   }
 }
+
+export async function getProductsInBasket (req, res) {
+  try {
+    let basketId = parseInt(req.params.basketId);
+    let products = await dinoModel.getProductsInBasket(basketId);
+    res.json(products);
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}

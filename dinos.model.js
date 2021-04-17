@@ -231,6 +231,7 @@ function findBasketById(basketArray, Id) {
 // update existing basket with a new product DONE
 export async function updateBasket(productId, basketId) {
   let basketArray = await getBaskets();
+  
   let index = findBasketById(basketArray, basketId); // findIndex
   if (index === -1)
     throw new Error(`Basket with ID:${basketId} doesn't exist`);
@@ -241,8 +242,7 @@ export async function updateBasket(productId, basketId) {
 }
 
 
-
-// delete product from existing basket of a specific user
+// Remove a product from an existing basket for a specific customer
 export async function removeProduct(basketId, productId) {
   let basketArray = await getBaskets();
   let index = findBasketById(basketArray, basketId); // findIndex
@@ -259,10 +259,16 @@ export async function removeProduct(basketId, productId) {
   }
 }
 
-// Remove a product from an existing basket for a specific customer
+
 
 // Get the list of all products assigned to the basket for a specific customer
-
+export async function getProductsInBasket(basketId) {
+  let basketArray = await getBaskets();
+  let index = findBasketById(basketArray, basketId);
+  if (index === -1)
+    throw new Error(`Basket with ID:${basketId} doesn't exist`);
+  else return index.products;
+}
 
 
 

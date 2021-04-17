@@ -1,9 +1,9 @@
-// get all dinos DONE
+// get all dinos 
 GET http://localhost:3000/velocishop/products HTTP/1.1
 
 ###
 
-// create customer DONE
+// create customer 
 POST http://localhost:3000/velocishop/customers HTTP/1.1
 content-type: application/json
 //testing where the (costumer) Id does not equal the basketId, and the basketId are then automatically set to the (costumer) Id
@@ -12,27 +12,31 @@ content-type: application/json
 
 ###
 
-// create basket for specific costumer DONE
+// create basket for specific costumer 
 POST http://localhost:3000/velocishop/customers/2/baskets HTTP/1.1
 content-type: application/json
 //testing where :id in the url does not match the (basket) Id and the costumerId. The (basket) Id and costumerId are then automatically set to the one in the url
 {"Id":3, "costumerId":3, "products":[]}
 ###
 
-// get dino by id DONE
+// get dino by id 
 GET http://localhost:3000/velocishop/products/15 HTTP/1.1
 
 ###
 
-// update basket
-PUT  http://localhost:3000/velocishop/customers/1/baskets/1/products/1 HTTP/1.1
+// update basket 
+PUT  http://localhost:3000/velocishop/customers/1/baskets/1/products/3 HTTP/1.1
 content-type: application/json
 
-{"Id":1,"costumerId":1,"products":[1]}
 
 ###
 
-// delete product by id, in an existing basket of a specific costumer
+// delete product by id, in an existing basket of a specific costumer 
 DELETE  http://localhost:3000/velocishop/customers/1/baskets/1/products/1 HTTP/1.1
+
+###
+
+//Get list of products in a specific user's basket
+GET http://localhost:3000/velocishop/customers/1/baskets/1/products HTTP/1.1
 
 ###
