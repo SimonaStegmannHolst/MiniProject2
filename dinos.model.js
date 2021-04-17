@@ -191,29 +191,14 @@ export async function getDinoByDiet(diet) {
 
 // Create a new basket for the costumer of a given ID /customers/{id}/baskets
 // test function for costumers ID. Used in getCostumerById
-function findCostumerByID(costumerArray, Id) {
-  return costumerArray.findIndex(
-    (currCostumer) => currCostumer.Id === Id
-  );
-}
-
-// Get a costumer for a given ID with all details 
-async function getCostumerByID(Id) {
-  let costumerArray = await getCostumers();
-  let index = findCostumerByID(costumerArray, Id);
-  if (index === -1)
-    throw new Error(`Costumer with ID:${Id} doesn't exist`);
-  else return costumerArray[index];
-}
-
-// test function for basket ID. Used in addBasket
+// test function for basket ID. Used in addBasketForUser DONE
 function findBasketByID(basketArray, Id) {
   return basketArray.findIndex(
     (currBasket) => currBasket.Id === Id
   );
 }
 
-// create a new basket
+// create a new basket for a specific user DONE
 export async function addBasketForUser(newBasket, id) {
   let basketArray = await getBaskets();
   if(newBasket.Id != id){
@@ -233,10 +218,23 @@ export async function addBasketForUser(newBasket, id) {
   await saveBaskets(basketArray);
 }
 
-/*export async function addBasketForUser(userId){
-  user = getCostumerByID(userId);
-  addBasket(userId);
-}*/
+function findCostumerByID(costumerArray, Id) {
+  return costumerArray.findIndex(
+    (currCostumer) => currCostumer.Id === Id
+  );
+}
+
+// Get a costumer for a given ID with all details NOT USED YET
+async function getCostumerByID(Id) {
+  let costumerArray = await getCostumers();
+  let index = findCostumerByID(costumerArray, Id);
+  if (index === -1)
+    throw new Error(`Costumer with ID:${Id} doesn't exist`);
+  else return costumerArray[index];
+}
+
+
+
 
 // Add a product to an existing basket for a specific customer
 
