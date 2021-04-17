@@ -1,0 +1,14 @@
+[
+{
+    "dietCategoryId":"1",
+    "diet":"omnivores"
+},
+{
+    "dietCategoryId":"2",
+    "diet":"carnivores"
+},
+{
+    "dietCategoryId":"3",
+    "diet":"herbivores"
+}
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "Id":1,
+        "customerName":"John Johnson",
+        "basketId":1
+    },
+    {
+        "Id":2,
+        "customerName":"Ana Peterson",
+        "basketId":2
+    }
+]

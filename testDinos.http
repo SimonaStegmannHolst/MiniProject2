@@ -1,5 +1,5 @@
-// get all dinos
-GET http://localhost:3000/products HTTP/1.1
+// get all dinos DONE
+GET http://localhost:3000/velocishop/products HTTP/1.1
 
 ###
 
@@ -10,8 +10,17 @@ content-type: application/json
 {"customerId":16, "customerName": "Ana Peterson"}
 ###
 
-// get dino by id
-GET http://localhost:3000/products/15 HTTP/1.1
+###
+
+// create basket for specific costumer 
+POST http://localhost:3000/velocishop/customers/2/baskets HTTP/1.1
+content-type: application/json
+
+{"Id":3, "costumerId":3, "products":[]}
+###
+
+// get dino by id DONE
+GET http://localhost:3000/velocishop/products/15 HTTP/1.1
 
 ###
 

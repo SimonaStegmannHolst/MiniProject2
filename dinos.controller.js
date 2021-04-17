@@ -54,3 +54,15 @@ export async function getDinoByDiet (req, res) {
     res.status(400).send(error.message);
   }
 }
+
+export async function postBasketForUser(req, res) {
+  try {
+    let newBasket = req.body;
+    let id = req.params.id; //id is from router specification
+    await dinoModel.addBasketForUser(newBasket, id);
+    res.end()
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}
