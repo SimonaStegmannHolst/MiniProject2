@@ -32,7 +32,7 @@ content-type: application/json
 
 ###
 
-// delete customer
-DELETE  http://localhost:3000/customers/15 HTTP/1.1
+// delete product by id, in an existing basket of a specific costumer
+DELETE  http://localhost:3000/velocishop/customers/1/baskets/1/products/1 HTTP/1.1
 
 ###

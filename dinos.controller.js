@@ -82,7 +82,19 @@ export async function putBasketItem (req, res) {
   try {
     let productId = parseInt(req.params.productId);
     let basketId = parseInt(req.params.basketId);
-    await dinoModel.updateBasket(productId, basketId, basketContent);
+    await dinoModel.updateBasket(productId, basketId); 
+    res.end();
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}
+
+export async function deleteProduct (req, res) {
+  try {
+    let productId = parseInt(req.params.productId);
+    let basketId = parseInt(req.params.basketId);
+    await dinoModel.removeProduct(productId, basketId);
     res.end();
   } catch (error) {
     // res.statusMessage=

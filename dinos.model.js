@@ -198,6 +198,7 @@ function findBasketByID(basketArray, Id) {
   );
 }
 
+
 // create a new basket for a specific user DONE
 export async function addBasketForUser(newBasket, id) {
   let basketArray = await getBaskets();
@@ -220,14 +221,14 @@ export async function addBasketForUser(newBasket, id) {
 
 
 
-// Add a product to an existing basket for a specific customer
-// test function for basket ID. Used in ...
+// Add a product to an existing basket for a specific customer DONE
+// test function for basket ID. Uses .find rather than .findIndex, to return the whole obejct and not just the index. Used in updateBasket DONE
 function findBasketById(basketArray, Id) {
   return basketArray.find(
     (currBasket) => currBasket.Id === Id
   );
 }
-// update existing basket with a new product
+// update existing basket with a new product DONE
 export async function updateBasket(productId, basketId) {
   let basketArray = await getBaskets();
   let index = findBasketById(basketArray, basketId); // findIndex
@@ -235,6 +236,25 @@ export async function updateBasket(productId, basketId) {
     throw new Error(`Basket with ID:${basketId} doesn't exist`);
   else {
     index.products.push(productId);
+    await saveBaskets(basketArray);
+  }
+}
+
+
+
+// delete product from existing basket of a specific user
+export async function removeProduct(basketId, productId) {
+  let basketArray = await getBaskets();
+  let index = findBasketById(basketArray, basketId); // findIndex
+  if (index === -1)
+    throw new Error(`Basket with ID:${basketId} doesn't exist`);
+  else {
+    for( var i = 0; i < index.products.length; i++){ 
+      if (index.products[i] === productId) { 
+  
+          index.products.splice(i, 1); 
+      }
+  }
     await saveBaskets(basketArray);
   }
 }
