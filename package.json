@@ -1,0 +1,17 @@
+{
+  "name": "miniproject2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dinoAPI.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon dinoAPI.js"
+  },
+  "author": "Simona Stegmann Holst",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

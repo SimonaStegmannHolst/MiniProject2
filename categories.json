@@ -1,0 +1,38 @@
+[
+    {
+      "categoryId": 1,
+      "categoryName": "Size",
+      "subcategories": [
+        {
+          "subcategoryId": 1,
+          "subcategoryName": "Small"
+        },
+        {
+          "subcategoryId": 2,
+          "subcategoryName": "Medium"
+        },
+        {
+          "subcategoryId": 3,
+          "subcategoryName": "Large"
+        }
+      ]
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "Diet",
+      "subcategories": [
+        {
+          "subcategoryId": 3,
+          "subcategoryName": "Carnivore"
+        },
+        {
+          "subcategoryId": 4,
+          "subcategoryName": "Herbivore"
+        },
+        {
+          "subcategoryId": 5,
+          "subcategoryName": "Omnivore"
+        }
+      ]
+    }
+  ]

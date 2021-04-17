@@ -1,0 +1,14 @@
+[
+    {
+        "sizeCategoryId":"1",
+        "diet":"small"
+    },
+    {
+        "sizeCategoryId":"2",
+        "diet":"medium"
+    },
+    {
+        "sizeCategoryId":"3",
+        "diet":"large"
+    }
+    ]
