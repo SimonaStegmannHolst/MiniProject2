@@ -66,3 +66,26 @@ export async function postBasketForUser(req, res) {
     res.status(400).send(error.message);
   }
 }
+
+export async function postCustomer(req, res) {
+  try {
+    let newCustomer = req.body;
+    await dinoModel.addCustumer(newCustomer);
+    res.end()
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}
+
+export async function putBasketItem (req, res) {
+  try {
+    let productId = parseInt(req.params.productId);
+    let basketId = parseInt(req.params.basketId);
+    await dinoModel.updateBasket(productId, basketId, basketContent);
+    res.end();
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}

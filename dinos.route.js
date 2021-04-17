@@ -1,7 +1,7 @@
 // index.js
 import express from 'express'
 //import {getAllDinos, postCustomer, getDino, putCustomer, deleteCustomer } from './dinos.controller.js'
-import {getAllDinos, getDino,  getAllCategories, getDinoBySize, getDinoByDiet, postBasketForUser} from './dinos.controller.js'
+import {getAllDinos, getDino,  getAllCategories, getDinoBySize, getDinoByDiet, postBasketForUser, postCustomer, putBasketItem} from './dinos.controller.js'
 
 export const dinosRouter = express.Router();
 
@@ -15,3 +15,5 @@ dinosRouter.get("/velocishop/categories", getAllCategories);
 dinosRouter.get("/velocishop/size/:size/products", getDinoBySize); 
 dinosRouter.get("/velocishop/diet/:diet/products", getDinoByDiet); 
 dinosRouter.post("/velocishop/customers/:id/baskets", postBasketForUser);
+dinosRouter.post("/velocishop/customers", postCustomer);
+dinosRouter.put("/velocishop/customers/:customerId/baskets/:basketId/products/:productId", putBasketItem);

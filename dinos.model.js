@@ -67,7 +67,7 @@ async function saveCategories(categories = []) {
 }
 
 //Get the list of all costumers
-export async function getCostumers() {
+export async function getCustumers() {
   try {
     let costumersTxt = await fs.readFile(COSTUMERS_FILE);
     let costumers = JSON.parse(costumersTxt);
@@ -190,7 +190,7 @@ export async function getDinoByDiet(diet) {
 
 
 // Create a new basket for the costumer of a given ID /customers/{id}/baskets
-// test function for costumers ID. Used in getCostumerById
+
 // test function for basket ID. Used in addBasketForUser DONE
 function findBasketByID(basketArray, Id) {
   return basketArray.findIndex(
@@ -218,26 +218,71 @@ export async function addBasketForUser(newBasket, id) {
   await saveBaskets(basketArray);
 }
 
-function findCostumerByID(costumerArray, Id) {
+
+
+// Add a product to an existing basket for a specific customer
+// test function for basket ID. Used in ...
+function findBasketById(basketArray, Id) {
+  return basketArray.find(
+    (currBasket) => currBasket.Id === Id
+  );
+}
+// update existing basket with a new product
+export async function updateBasket(productId, basketId) {
+  let basketArray = await getBaskets();
+  let index = findBasketById(basketArray, basketId); // findIndex
+  if (index === -1)
+    throw new Error(`Basket with ID:${basketId} doesn't exist`);
+  else {
+    index.products.push(productId);
+    await saveBaskets(basketArray);
+  }
+}
+
+// Remove a product from an existing basket for a specific customer
+
+// Get the list of all products assigned to the basket for a specific customer
+
+
+
+
+
+
+
+
+
+
+//Extra functions that are not a requirement
+
+// test function for costumers ID. Used in getCostumerById
+function findCustumerByID(costumerArray, Id) {
   return costumerArray.findIndex(
     (currCostumer) => currCostumer.Id === Id
   );
 }
 
 // Get a costumer for a given ID with all details NOT USED YET
-async function getCostumerByID(Id) {
-  let costumerArray = await getCostumers();
-  let index = findCostumerByID(costumerArray, Id);
+async function getCustumerByID(Id) {
+  let costumerArray = await getCustumers();
+  let index = findCustumerByID(costumerArray, Id);
   if (index === -1)
     throw new Error(`Costumer with ID:${Id} doesn't exist`);
   else return costumerArray[index];
 }
 
+// create a new customer
+export async function addCustumer(newCustomer) {
+  let customerArray = await getCustumers();
 
+  if(newCustomer.basketId != newCustomer.Id){
+    console.log("did not equal id")
+    newCustomer.basketId = parseInt(newCustomer.Id);
+  }
 
-
-// Add a product to an existing basket for a specific customer
-
-// Remove a product from an existing basket for a specific customer
-
-// Get the list of all products assigned to the basket for a specific customer
+  if (findCustumerByID(customerArray, newCustomer.Id) !== -1 )
+    throw new Error(
+      `Customer with Id:${newCustomer.Id} already exists`
+    );
+  customerArray.push(newCustomer);
+  await saveCostumers(customerArray);
+}
