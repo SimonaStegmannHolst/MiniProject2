@@ -1,31 +1,17 @@
 import * as fs from "fs/promises";
 const DINOS_FILE = "./dinos.json";
 const CATEGORY_FILE ="./categories.json";
-const COSTUMERS_FILE ="./costumers.json";
+const CUSTOMERS_FILE ="./costumers.json";
 const BASKETS_FILE ="./baskets.json";
 
 //write the API calls
 
 //Get the list of all products with the most important information only (dinoId, productName, diet and size) /products
-export async function getAllDinos() {
+export async function getDinos() {
   try {
     let dinosTxt = await fs.readFile(DINOS_FILE);
     let dinos = JSON.parse(dinosTxt);
-    dinos.forEach(dino => 
-      (delete dino.era, 
-      delete dino.latinName, 
-      delete dino.imageName1, 
-      delete dino.imageName2, 
-      delete dino.imageName3, 
-      delete dino.manufacturer, 
-      delete dino.dna, 
-      delete dino.lenght, 
-      delete dino.height, 
-      delete dino.weight, 
-      delete dino.difficulty, 
-      delete dino.description ));
     return dinos;
-    //TODO: return only important info!!!!!!!!!
   } catch (err) {
     if (err.code === "ENOENT") {
       // file does not exits
@@ -66,27 +52,27 @@ async function saveCategories(categories = []) {
   await fs.writeFile(CATEGORY_FILE, categoriesTxt);
 }
 
-//Get the list of all costumers
-export async function getCustumers() {
+//Get the list of all customers
+export async function getCustomers() {
   try {
-    let costumersTxt = await fs.readFile(COSTUMERS_FILE);
-    let costumers = JSON.parse(costumersTxt);
-    return costumers;
+    let customersTxt = await fs.readFile(CUSTOMERS_FILE);
+    let customers = JSON.parse(customersTxt);
+    return customers;
     
   } catch (err) {
     if (err.code === "ENOENT") {
       // file does not exits
-      await saveCostumers([]); // create a new file with empty array
+      await saveCustomers([]); // create a new file with empty array
       return []; // return empty array
     } // // cannot handle this exception, so rethrow
     else throw err;
   }
 }
 
-// save array of costumers to file. Function used in function getCostumers
-async function saveCostumers(costumers = []) {
-  let costumersTxt = JSON.stringify(costumers);
-  await fs.writeFile(COSTUMERS_FILE, costumersTxt);
+// save array of customers to file. Function used in function getCustomers
+async function saveCustomers(customers = []) {
+  let customersTxt = JSON.stringify(customers);
+  await fs.writeFile(CUSTOMERS_FILE, customersTxt);
 }
 
 //Get the list of all baskets
@@ -126,6 +112,24 @@ async function saveBaskets(baskets = []) {
 
 
 
+// Get the list of all product dinos with most important information only
+export async function getAllDinos(){
+  let dinoArray = await getDinos();
+  dinoArray.forEach((dino) => (delete dino.era, 
+    delete dino.latinName, 
+    delete dino.imageName1, 
+    delete dino.imageName2, 
+    delete dino.imageName3, 
+    delete dino.manufacturer, 
+    delete dino.dna, 
+    delete dino.lenght, 
+    delete dino.height, 
+    delete dino.weight, 
+    delete dino.length,
+    delete dino.difficulty, 
+    delete dino.description));
+  return dinoArray;
+}
 
 
 // test function for dinos ID. Used in getDinoByID DONE
@@ -136,7 +140,7 @@ function findDinoByID(dinoArray, Id) {
 }
 // Get a product for a given ID with all details /products/{id} DONE
 export async function getDinoByID(dinoId) {
-  let dinoArray = await getAllDinos();
+  let dinoArray = await getDinos();
   let index = findDinoByID(dinoArray, dinoId);
   if (index === -1)
     throw new Error(`Dino with ID:${dinoId} doesn't exist`);
@@ -161,7 +165,7 @@ function findSize(dinoArray, size){
 
 // get product by size DONE
 export async function getDinoBySize(size) {
-  let dinoArray = await getAllDinos();
+  let dinoArray = await getDinos();
   let index = findSize(dinoArray, size);
   if (index === -1)
     throw new Error(`Size:${size} doesn't exist`);
@@ -178,7 +182,7 @@ function findDiet(dinoArray, diet){
 
 // get product by diet DONE
 export async function getDinoByDiet(diet) {
-  let dinoArray = await getAllDinos();
+  let dinoArray = await getDinos();
   let index = findDiet(dinoArray, diet);
   if (index === -1)
     throw new Error(`Diet:${diet} doesn't exist`);
@@ -206,9 +210,9 @@ export async function addBasketForUser(newBasket, id) {
     console.log("did not equal id")
     newBasket.Id = parseInt(id);
   }
-  if(newBasket.costumerId != id){
-    console.log("did not equal costumer id")
-    newBasket.costumerId = parseInt(id);
+  if(newBasket.customerId != id){
+    console.log("did not equal customer id")
+    newBasket.customerId = parseInt(id);
   }
 
   if (findBasketByID(basketArray, newBasket.Id) !== -1 )
@@ -280,35 +284,35 @@ export async function getProductsInBasket(basketId) {
 
 //Extra functions that are not a requirement
 
-// test function for costumers ID. Used in getCostumerById
-function findCustumerByID(costumerArray, Id) {
-  return costumerArray.findIndex(
-    (currCostumer) => currCostumer.Id === Id
+// test function for customers ID. Used in getCustomersById
+function findCustomersByID(customerArray, Id) {
+  return customerArray.findIndex(
+    (currCustomer) => currCustomer.Id === Id
   );
 }
 
-// Get a costumer for a given ID with all details NOT USED YET
-async function getCustumerByID(Id) {
-  let costumerArray = await getCustumers();
-  let index = findCustumerByID(costumerArray, Id);
+// Get a customer for a given ID with all details NOT USED YET
+async function getCustomerByID(Id) {
+  let customerArray = await getCustomers();
+  let index = findCustomersByID(customerArray, Id);
   if (index === -1)
-    throw new Error(`Costumer with ID:${Id} doesn't exist`);
-  else return costumerArray[index];
+    throw new Error(`Customer with ID:${Id} doesn't exist`);
+  else return customerArray[index];
 }
 
 // create a new customer
-export async function addCustumer(newCustomer) {
-  let customerArray = await getCustumers();
+export async function addCustomer(newCustomer) {
+  let customerArray = await getCustomers();
 
   if(newCustomer.basketId != newCustomer.Id){
     console.log("did not equal id")
     newCustomer.basketId = parseInt(newCustomer.Id);
   }
 
-  if (findCustumerByID(customerArray, newCustomer.Id) !== -1 )
+  if (findCustomersByID(customerArray, newCustomer.Id) !== -1 )
     throw new Error(
       `Customer with Id:${newCustomer.Id} already exists`
     );
   customerArray.push(newCustomer);
-  await saveCostumers(customerArray);
+  await saveCustomers(customerArray);
 }

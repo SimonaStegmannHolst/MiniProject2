@@ -70,7 +70,7 @@ export async function postBasketForUser(req, res) {
 export async function postCustomer(req, res) {
   try {
     let newCustomer = req.body;
-    await dinoModel.addCustumer(newCustomer);
+    await dinoModel.addCustomer(newCustomer);
     res.end()
   } catch (error) {
     // res.statusMessage=
