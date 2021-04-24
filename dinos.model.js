@@ -122,12 +122,14 @@ export async function getAllDinos(){
     delete dino.imageName3, 
     delete dino.manufacturer, 
     delete dino.dna, 
+    delete dino.categories,
     delete dino.lenght, 
     delete dino.height, 
     delete dino.weight, 
     delete dino.length,
     delete dino.difficulty, 
-    delete dino.description));
+    delete dino.description,
+    delete dino.cardDescription));
   return dinoArray;
 }
 
@@ -140,7 +142,7 @@ function findDinoByID(dinoArray, Id) {
 }
 // Get a product for a given ID with all details /products/{id} DONE
 export async function getDinoByID(dinoId) {
-  let dinoArray = await getDinos();
+  let dinoArray = await getAllDinos();
   let index = findDinoByID(dinoArray, dinoId);
   if (index === -1)
     throw new Error(`Dino with ID:${dinoId} doesn't exist`);
@@ -165,7 +167,7 @@ function findSize(dinoArray, size){
 
 // get product by size DONE
 export async function getDinoBySize(size) {
-  let dinoArray = await getDinos();
+  let dinoArray = await getAllDinos();
   let index = findSize(dinoArray, size);
   if (index === -1)
     throw new Error(`Size:${size} doesn't exist`);
@@ -182,7 +184,7 @@ function findDiet(dinoArray, diet){
 
 // get product by diet DONE
 export async function getDinoByDiet(diet) {
-  let dinoArray = await getDinos();
+  let dinoArray = await getAllDinos();
   let index = findDiet(dinoArray, diet);
   if (index === -1)
     throw new Error(`Diet:${diet} doesn't exist`);

@@ -17,6 +17,16 @@ GET http://localhost:3000/velocishop/categories HTTP/1.1
 
 ###
 
+// get all products with size small 
+GET http://localhost:3000/velocishop/size/Small/products HTTP/1.1
+
+###
+
+// get all products with diet herbivore 
+GET http://localhost:3000/velocishop/diet/Herbivore/products HTTP/1.1
+
+###
+
 ###
 
 // create basket for specific customer
