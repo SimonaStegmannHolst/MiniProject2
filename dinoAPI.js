@@ -3,7 +3,7 @@ import express from 'express';
 import {dinosRouter} from "./dinos.route.js";
 //import {quizzesRouter} from "./quizzes/quizzes.route.js";
 const app = express();
-const PORT = 3000;
+const PORT = 3005;
 
 // This is a built-in middleware function in Express. It parses incoming requests with JSON payloads.
 app.use(express.json());

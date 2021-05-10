@@ -1,10 +1,10 @@
 // get all dinos 
-GET http://localhost:3000/velocishop/products HTTP/1.1
+GET http://localhost:3005/velocishop/products HTTP/1.1
 
 ###
 
 // create customer 
-POST http://localhost:3000/velocishop/customers HTTP/1.1
+POST http://localhost:3005/velocishop/customers HTTP/1.1
 content-type: application/json
 //testing where the (costumer) Id does not equal the basketId, and the basketId are then automatically set to the (costumer) Id
 
@@ -13,24 +13,24 @@ content-type: application/json
 ###
 
 // get all categories 
-GET http://localhost:3000/velocishop/categories HTTP/1.1
+GET http://localhost:3005/velocishop/categories HTTP/1.1
 
 ###
 
 // get all products with size small 
-GET http://localhost:3000/velocishop/size/Small/products HTTP/1.1
+GET http://localhost:3005/velocishop/size/Small/products HTTP/1.1
 
 ###
 
 // get all products with diet herbivore 
-GET http://localhost:3000/velocishop/diet/Herbivore/products HTTP/1.1
+GET http://localhost:3005/velocishop/diet/Herbivore/products HTTP/1.1
 
 ###
 
 ###
 
 // create basket for specific customer
-POST http://localhost:3000/velocishop/customers/2/baskets HTTP/1.1
+POST http://localhost:3005/velocishop/customers/2/baskets HTTP/1.1
 content-type: application/json
 //testing where :id in the url does not match the (basket) Id and the costumerId. The (basket) Id and costumerId are then automatically set to the one in the url
 
@@ -39,23 +39,23 @@ content-type: application/json
 ###
 
 // get dino by id 
-GET http://localhost:3000/velocishop/products/15 HTTP/1.1
+GET http://localhost:3005/velocishop/products/15 HTTP/1.1
 
 ###
 
 // update basket 
-PUT  http://localhost:3000/velocishop/customers/1/baskets/1/products/3 HTTP/1.1
+PUT  http://localhost:3005/velocishop/customers/1/baskets/1/products/3 HTTP/1.1
 content-type: application/json
 
 
 ###
 
 // delete product by id, in an existing basket of a specific costumer 
-DELETE  http://localhost:3000/velocishop/customers/1/baskets/1/products/1 HTTP/1.1
+DELETE  http://localhost:3005/velocishop/customers/1/baskets/1/products/1 HTTP/1.1
 
 ###
 
 //Get list of products in a specific user's basket
-GET http://localhost:3000/velocishop/customers/1/baskets/1/products HTTP/1.1
+GET http://localhost:3005/velocishop/customers/1/baskets/1/products HTTP/1.1
 
 ###
