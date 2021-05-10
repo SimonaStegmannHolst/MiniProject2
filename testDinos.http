@@ -8,7 +8,7 @@ POST http://localhost:3005/velocishop/customers HTTP/1.1
 content-type: application/json
 //testing where the (costumer) Id does not equal the basketId, and the basketId are then automatically set to the (costumer) Id
 
-{"Id":3, "customerName":"Simona Holst", "basketId":4}
+{"Id":"3", "customerName":"Simona Holst", "basketId":"4"}
 
 ###
 

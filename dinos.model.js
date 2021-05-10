@@ -308,7 +308,7 @@ export async function addCustomer(newCustomer) {
 
   if(newCustomer.basketId != newCustomer.Id){
     console.log("did not equal id")
-    newCustomer.basketId = parseInt(newCustomer.Id);
+    newCustomer.basketId = (newCustomer.Id);
   }
 
   if (findCustomersByID(customerArray, newCustomer.Id) !== -1 )
