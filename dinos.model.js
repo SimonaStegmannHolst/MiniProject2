@@ -294,7 +294,7 @@ function findCustomersByID(customerArray, Id) {
 }
 
 // Get a customer for a given ID with all details NOT USED YET
-async function getCustomerByID(Id) {
+export async function getCustomerByID(Id) {
   let customerArray = await getCustomers();
   let index = findCustomersByID(customerArray, Id);
   if (index === -1)

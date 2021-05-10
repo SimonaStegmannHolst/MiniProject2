@@ -1,9 +1,16 @@
 import express from 'express';
-
+import cors from 'cors';
 import {dinosRouter} from "./dinos.route.js";
 //import {quizzesRouter} from "./quizzes/quizzes.route.js";
 const app = express();
 const PORT = 3005;
+app.use(
+  cors({
+    origin: "http://localhost:3000", // restrict calls to those this address
+    "Access-Control-Allow-Origin" : "*", 
+    "Access-Control-Allow-Credentials" : true 
+  })
+);
 
 // This is a built-in middleware function in Express. It parses incoming requests with JSON payloads.
 app.use(express.json());

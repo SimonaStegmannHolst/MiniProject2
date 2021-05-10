@@ -112,3 +112,14 @@ export async function getProductsInBasket (req, res) {
     res.status(400).send(error.message);
   }
 }
+
+export async function getCostumer (req, res) {
+  try {
+    let id = (req.params.id)
+    let costumer = await dinoModel.getCustomerByID(id);
+    res.json(costumer);
+  } catch (error) {
+    // res.statusMessage=
+    res.status(400).send(error.message);
+  }
+}
