@@ -12,8 +12,8 @@ content-type: application/json
 
 ###
 
-// get costumer by id 
-GET http://localhost:3005/velocishop/costumers/1 HTTP/1.1
+// get customer by id 
+GET http://localhost:3005/velocishop/customers/1 HTTP/1.1
 
 ###
 

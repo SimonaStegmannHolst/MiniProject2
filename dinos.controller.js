@@ -113,11 +113,11 @@ export async function getProductsInBasket (req, res) {
   }
 }
 
-export async function getCostumer (req, res) {
+export async function getCustomer (req, res) {
   try {
     let id = (req.params.id)
-    let costumer = await dinoModel.getCustomerByID(id);
-    res.json(costumer);
+    let customer = await dinoModel.getCustomerByID(id);
+    res.json(customer);
   } catch (error) {
     // res.statusMessage=
     res.status(400).send(error.message);
