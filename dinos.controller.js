@@ -81,7 +81,7 @@ export async function postCustomer(req, res) {
 export async function putBasketItem (req, res) {
   try {
     let productId = parseInt(req.params.productId);
-    let basketId = parseInt(req.params.basketId);
+    let basketId = (req.params.basketId);
     await dinoModel.updateBasket(productId, basketId); 
     res.end();
   } catch (error) {
@@ -93,7 +93,8 @@ export async function putBasketItem (req, res) {
 export async function deleteProduct (req, res) {
   try {
     let productId = parseInt(req.params.productId);
-    let basketId = parseInt(req.params.basketId);
+    let basketId = (req.params.basketId);
+    console.log("this is baskedID in controller: " + basketId)
     await dinoModel.removeProduct(productId, basketId);
     res.end();
   } catch (error) {
@@ -104,7 +105,7 @@ export async function deleteProduct (req, res) {
 
 export async function getProductsInBasket (req, res) {
   try {
-    let basketId = parseInt(req.params.basketId);
+    let basketId = (req.params.basketId);
     let products = await dinoModel.getProductsInBasket(basketId);
     res.json(products);
   } catch (error) {

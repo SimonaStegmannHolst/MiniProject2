@@ -249,15 +249,17 @@ export async function updateBasket(productId, basketId) {
 
 
 // Remove a product from an existing basket for a specific customer
-export async function removeProduct(basketId, productId) {
+export async function removeProduct(productId, basketId) {
   let basketArray = await getBaskets();
+  console.log("this is basketID: " + basketId)
   let index = findBasketById(basketArray, basketId); // findIndex
   if (index === -1)
     throw new Error(`Basket with ID:${basketId} doesn't exist`);
-  else {
+  else { console.log("in else in removeProduct")
     for( var i = 0; i < index.products.length; i++){ 
-      if (index.products[i] === productId) { 
-  
+      console.log(index.products[i], productId)
+      if (index.products[i] == productId) { 
+          console.log("in if")
           index.products.splice(i, 1); 
       }
   }
