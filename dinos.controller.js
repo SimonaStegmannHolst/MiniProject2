@@ -1,6 +1,5 @@
 import * as dinoModel from "./dinos.model.js";
 
-//write functions
 
 export async function getAllDinos(req, res) {
     try {
@@ -58,7 +57,7 @@ export async function getDinoByDiet (req, res) {
 export async function postBasketForUser(req, res) {
   try {
     let newBasket = req.body;
-    let id = req.params.id; //id is from router specification
+    let id = req.params.id; 
     await dinoModel.addBasketForUser(newBasket, id);
     res.end()
   } catch (error) {
@@ -94,7 +93,6 @@ export async function deleteProduct (req, res) {
   try {
     let productId = parseInt(req.params.productId);
     let basketId = (req.params.basketId);
-    console.log("this is baskedID in controller: " + basketId)
     await dinoModel.removeProduct(productId, basketId);
     res.end();
   } catch (error) {

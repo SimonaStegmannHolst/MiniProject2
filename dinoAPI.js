@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import {dinosRouter} from "./dinos.route.js";
-//import {quizzesRouter} from "./quizzes/quizzes.route.js";
+
 const app = express();
 const PORT = 3005;
 app.use(
@@ -17,10 +17,6 @@ app.use(express.json());
 
 // paths handled by dinosRouter
 app.use(dinosRouter)
-
-// new addition!
-// paths handled by quizzesRouter
-//app.use(quizzesRouter)
 
 app.get("/", (req, res) => res.send("Server 3: Hello World!"));
 

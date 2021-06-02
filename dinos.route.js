@@ -9,7 +9,7 @@ export const dinosRouter = express.Router();
 // middleware specific to this route
 dinosRouter.use(express.json())
 
-// route handlers ADD MORE
+// route handlers 
 dinosRouter.get("/velocishop/products", getAllDinos);
 dinosRouter.get("/velocishop/products/:id", getDino);
 dinosRouter.get("/velocishop/customers/:id", getCustomer);

@@ -4,7 +4,6 @@ const CATEGORY_FILE ="./categories.json";
 const CUSTOMERS_FILE ="./costumers.json";
 const BASKETS_FILE ="./baskets.json";
 
-//write the API calls
 
 //Get the list of all products with the most important information only (dinoId, productName, diet and size) /products
 export async function getDinos() {
@@ -134,13 +133,13 @@ export async function getAllDinos(){
 }
 
 
-// test function for dinos ID. Used in getDinoByID DONE
+// test function for dinos ID. Used in getDinoByID 
 function findDinoByID(dinoArray, Id) {
     return dinoArray.findIndex(
       (currDino) => currDino.dinoId === Id
     );
 }
-// Get a product for a given ID with all details /products/{id} DONE
+// Get a product for a given ID with all details /products/{id} 
 export async function getDinoByID(dinoId) {
   let dinoArray = await getAllDinos();
   let index = findDinoByID(dinoArray, dinoId);
@@ -150,7 +149,7 @@ export async function getDinoByID(dinoId) {
 }
 
 
-// Get the list of all product categories (size and diet) DONE
+// Get the list of all product categories (size and diet) 
 export async function getAllCategories(){
     let categories = await getCategories();
     categories.forEach((category) => (delete category.categoryId));
@@ -159,13 +158,13 @@ export async function getAllCategories(){
 
 
 
-// Get the list of all products assigned to this subcategory with the most important information only /size/:size/products DONE
-// test function for category name DONE
+// Get the list of all products assigned to this subcategory with the most important information only /size/:size/products 
+// test function for category name 
 function findSize(dinoArray, size){
   return dinoArray.findIndex((currDino) => currDino.size === size)
 }
 
-// get product by size DONE
+// get product by size
 export async function getDinoBySize(size) {
   let dinoArray = await getAllDinos();
   let index = findSize(dinoArray, size);
@@ -176,13 +175,13 @@ export async function getDinoBySize(size) {
   );
 }
 
-// Get the list of all products assigned to this subcategory with the most important information only /diet/:diet/products DONE
+// Get the list of all products assigned to this subcategory with the most important information only /diet/:diet/products 
 // test function for category name
 function findDiet(dinoArray, diet){
   return dinoArray.findIndex((currDino) => currDino.diet === diet)
 }
 
-// get product by diet DONE
+// get product by diet 
 export async function getDinoByDiet(diet) {
   let dinoArray = await getAllDinos();
   let index = findDiet(dinoArray, diet);
@@ -197,7 +196,7 @@ export async function getDinoByDiet(diet) {
 
 // Create a new basket for the costumer of a given ID /customers/{id}/baskets
 
-// test function for basket ID. Used in addBasketForUser DONE
+// test function for basket ID. Used in addBasketForUser 
 function findBasketByID(basketArray, Id) {
   return basketArray.findIndex(
     (currBasket) => currBasket.Id === Id
@@ -205,7 +204,7 @@ function findBasketByID(basketArray, Id) {
 }
 
 
-// create a new basket for a specific user DONE
+// create a new basket for a specific user 
 export async function addBasketForUser(newBasket, id) {
   let basketArray = await getBaskets();
   if(newBasket.Id != id){
@@ -227,14 +226,14 @@ export async function addBasketForUser(newBasket, id) {
 
 
 
-// Add a product to an existing basket for a specific customer DONE
-// test function for basket ID. Uses .find rather than .findIndex, to return the whole obejct and not just the index. Used in updateBasket DONE
+// Add a product to an existing basket for a specific customer 
+// test function for basket ID. Uses .find rather than .findIndex, to return the whole obejct and not just the index. Used in updateBasket 
 function findBasketById(basketArray, Id) {
   return basketArray.find(
     (currBasket) => currBasket.Id === Id
   );
 }
-// update existing basket with a new product DONE
+// update existing basket with a new product 
 export async function updateBasket(productId, basketId) {
   let basketArray = await getBaskets();
   
@@ -295,7 +294,7 @@ function findCustomersByID(customerArray, Id) {
   );
 }
 
-// Get a customer for a given ID with all details NOT USED YET
+// Get a customer for a given ID with all details 
 export async function getCustomerByID(Id) {
   let customerArray = await getCustomers();
   let index = findCustomersByID(customerArray, Id);
