@@ -39,7 +39,7 @@ POST http://localhost:3005/velocishop/customers/2/baskets HTTP/1.1
 content-type: application/json
 //testing where :id in the url does not match the (basket) Id and the costumerId. The (basket) Id and costumerId are then automatically set to the one in the url
 
-{"Id":3, "customerId":3, "products":[]}
+{"Id":"3", "customerId":"3", "products":[]}
 
 ###
 
